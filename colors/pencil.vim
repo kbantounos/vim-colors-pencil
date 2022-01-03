@@ -41,6 +41,10 @@ if ! exists("g:pencil_higher_contrast_ui")
   let g:pencil_higher_contrast_ui = 0
 endif
 
+if ! exists("g:pencil_light_bg_actual_white")
+  let g:pencil_light_bg_actual_white = 0
+endif
+
 if ! exists("g:pencil_neutral_code_bg")
   let g:pencil_neutral_code_bg = 0
 endif
@@ -115,7 +119,11 @@ if &background == "dark"
   let s:red             = s:light_red
   let s:visual          = s:lighter_black
 else
-  let s:bg              = s:white
+  if g:pencil_light_bg_actual_white
+      let s:bg              = s:actual_white
+  else
+      let s:bg              = s:white
+  endif
   let s:bg_subtle       = s:light_gray
   let s:bg_very_subtle  = s:lighter_gray
   let s:norm            = s:light_black
